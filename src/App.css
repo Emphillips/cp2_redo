@@ -27,6 +27,19 @@
 .App-link {
   color: #61dafb;
 }
+.navMenu-link {
+  margin: auto 20px;
+  list-style: none;
+}
+
+.navMenu-link:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -34,5 +47,16 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media all and (min-width: 480px) {
+  .loginContainer {
+    padding: 60px 0;
+  }
+
+  .loginContainer form {
+    margin: 0 auto;
+    max-width: 320px;
   }
 }

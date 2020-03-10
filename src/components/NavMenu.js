@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 
 //Material-ui styling
@@ -25,8 +26,14 @@ export default function NavMenu() {
         <AppBar style={{ background: '#2E3B55' }} position="static">
           <Toolbar>
             <Typography variant="h6"  color="inherit" className={classes.title}>
-              Gym Search ATX
+              Another Gym Search ATX
             </Typography>
+            <li className="navMenu-link">
+            <Link to="/Listings">Listing</Link>       
+            </li>
+          <li className="navMenu-link">
+            <Link to="/Access">Login</Link>
+            </li>
           </Toolbar>
         </AppBar>
       </div>
