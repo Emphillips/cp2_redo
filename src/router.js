@@ -1,8 +1,11 @@
 import React from 'react';
-import { Switch, Route } from 'react-router';
+// Import Containers
 import Listing from './containers/Listing';
 import Details from './containers/Details';
 import Access from './containers/Access';
+// Import Router
+import { Switch, Route } from 'react-router';
+
 
 const Router = () => {
         return (
@@ -12,6 +15,6 @@ const Router = () => {
                 <Route path="/place/:id" component={Details} />
             </Switch>
         )
-    }
+    };
 
-    export default Router
+    export default Router;

@@ -1,13 +1,46 @@
-import React from 'react'
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import React from 'react';
+// Redux Import
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+// Styling Import
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 
 import '../App.css';
 
+// Material Ui styling 
+const useStyles = makeStyles({
+  root: {
+    minWidth: 275,
+    maxWidth: "75%",
+    
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+  logInButton: {
+    background: '#2E3B55',
+    marginTop: 6,
+    color: 'white',
+
+  },
+  text: {
+    margin: 3,
+   
+    
+  }
+});
+
   
 const Access = (props) => {
-  // const classes = useStyles();
+  const classes = useStyles();
   const [password, setPassword] = useState('')
   const [username, setUsername] = useState('')
   const history = useHistory()
@@ -17,38 +50,49 @@ const Access = (props) => {
     document.cookie = 'loggedIn=true;max-age = 60*1000'
     props.user(username)
     props.user(password)
-    history.push("/Listings")
+    history.push("/Listing")
   }
     
   
-    return (
-      <div className="loginContainer">
-        {/* <form onSubmit={handleSubmit}> */}
-          <FormGroup controlId="email" bsSize="large">
-            <ControlLabel>Username</ControlLabel>
-            <FormControl
-              autoFocus
-              type="email"
+  return (
+    <div className="loginContainer">
+      <Card className={classes.root}>
+        <CardContent>
+          <Typography className={classes.title} color="textSecondary" gutterBottom>
+            Sign In
+        </Typography>
+          <form onSubmit={login}>
+            <TextField
+              required
+              id="outlined-required"
+              label="Username"
+              variant="outlined"
+              onChange={(e) => setUsername(e.target.value)}
               value={username}
-              onChange={e => setUsername(e.target.value)}
+              className={classes.text}
             />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
-            <FormControl
-              value={password}
-              onChange={e => setPassword(e.target.value)}
+            <TextField
+              required
+              id="outlined-password-input"
+              label="Password"
               type="password"
+              autoComplete="current-password"
+              variant="outlined"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              className={classes.text}
             />
-          </FormGroup>
-          {/* <Button
+            <Typography variant="h5" component="h2">
+            </Typography>
+            <Button
               type="submit"
-              className={classes.logInButton}>LogIn</Button> */}
-          <Button block bsSize="large" type="submit">
-            Login
-          </Button>
-      </div>
-    );
-  };
+              className={classes.logInButton}>LogIn</Button>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  )
+};
+
 
 export default Access;
